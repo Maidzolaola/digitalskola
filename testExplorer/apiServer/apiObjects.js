@@ -9,19 +9,19 @@ async function postMethod() {
   const response = await request(url)
     .post("/objects")
     .send({
-      name: "Agus Budiman",
+      name: "Maidzola",
       data: {
-        Generation: "2024th",
-        Price: "10000",
-        Capacity: "125 GB",
+        Generation: "2",
+        Price: "700000",
+        Capacity: "1TB",
       },
     });
   //assertation / verifikasi
   expect(response.status).to.equal(200);
-  expect(response.body.name).to.equal("Agus Budiman");
-//   expect(response.data.Generation).to.equal("2024th");
-//   expect(response.data.Price).to.equal("10000");
-//   expect(response.data.Capacity).to.equal("125 GB");
+  expect(response.body.name).to.equal("Maidzola");
+  //expect(response.data.Generation).to.equal(2);
+  //expect(response.data.Price).to.equal(700000);
+  //expect(response.data.Capacity).to.equal("1TB");
   expect(response.body.createdAt).to.not.be.null;
   //simpan id after POST
   const id = response.body.id;
@@ -36,10 +36,10 @@ async function getMethod(id) {
     //assertation / verifikasi
     expect(response.status).to.equal(200);
     expect(response.body.id).to.equal(id);
-    expect(response.body.name).to.equal("Agus Budiman");
-    // expect(response.data.Generation).to.equal("2024th");
-    // expect(response.data.Price).to.equal("10000");
-    // expect(response.data.Capacity).to.equal("125 GB");
+    expect(response.body.name).to.equal("Maidzola");
+    // expect(response.data.Generation).to.equal(2);
+    // expect(response.data.Price).to.equal(700000);
+    //expect(response.data.Capacity).to.equal("1TB");
     console.log(response.body);
   }
   
@@ -48,18 +48,18 @@ async function putMethod(id) {
     const response = await request(url)
       .put(`/objects/${id}`)
       .send({
-        name: "Agus Budiman PUT",
+        name: "Maidzola PUT",
         data: {
-        Generation: "2024th",
-        Price: "10000",
-        Capacity: "125 GB",
-        // Guarantee: "5 year",
+          Generation: "2",
+          Price: "700000",
+          Capacity: "1TB",
+          Guarantee: "5",
         },
       });
     //assertation / verifikasi
     expect(response.status).to.equal(200);
-    // expect(response.data.Guarantee).to.equal("5 year");
-    expect(response.body.name).to.equal("Agus Budiman PUT");
+    expect(response.body.name).to.equal("Maidzola PUT");
+    // expect(response.data.Guarantee).to.equal(5);
   }
 
 
