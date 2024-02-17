@@ -63,5 +63,15 @@ async function putMethod(id) {
   }
 
 
+  async function patchMethod(id) {
+    const response = await request(url)
+      .patch(`/objects/${id}`)
+      .send({
+        name: "Maidzola PATCH"
+      });
+    //assertation / verifikasi
+    expect(response.status).to.equal(200);
+    expect(response.body.name).to.equal("Maidzola PATCH");
+  }
 
-module.exports = { postMethod, getMethod, putMethod };
+module.exports = { postMethod, getMethod, putMethod, patchMethod };
